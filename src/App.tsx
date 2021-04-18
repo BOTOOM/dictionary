@@ -1,8 +1,9 @@
 import React, { useState,useEffect, FC } from 'react'
 import NavBar from './components/NavBar';
 import SearchCard from './components/searchCard';
+import ResultList from './components/ResultList'
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 
 import './App.css';
@@ -11,6 +12,9 @@ const App: FC = () => {
 
   const [resultSearch, setResultSearch] = useState({})
   const [word, setWord] = useState('');
+  const cosa = {
+    "hola": "holis"
+  }
 
   useEffect(() => {
 
@@ -28,6 +32,7 @@ const App: FC = () => {
             }
           });
           console.log(response.data)
+          setResultSearch(response.data)
         }
         // setResultSearch(respo)
       } catch (error) {
@@ -49,8 +54,9 @@ const App: FC = () => {
         <SearchCard onTipeWord={(value) =>  {
           console.log(value)
           setWord(value);
-          // getDictionary()
           } } />
+          <br/>
+          <ResultList responseArray={resultSearch} ></ResultList>
       </Container>
     </div>
   );
