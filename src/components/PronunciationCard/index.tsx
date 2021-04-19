@@ -4,18 +4,19 @@ import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 
 
-
-const EntrieCard = ({dataEntry}) => {
+const PronunciationCard = ({nameEntry, dataEntry}) => {
     console.log(dataEntry)
     return (
         <Card className="entrie_card">
             <CardContent>
                 <Typography>
-                    <strong>palabra</strong>
+                    <strong>{nameEntry}</strong>
+                    <br/>
+                    Pronunciation
                 </Typography>
             </CardContent>
         </Card>
     )
 }
 
-export default EntrieCard
+export default PronunciationCard

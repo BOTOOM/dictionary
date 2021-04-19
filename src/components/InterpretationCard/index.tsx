@@ -4,8 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 
 
-
-const EntrieCard = ({dataEntry}) => {
+const InterpretationCard = ({dataEntry}) => {
     console.log(dataEntry)
     return (
         <Card className="entrie_card">
@@ -18,4 +17,4 @@ const EntrieCard = ({dataEntry}) => {
     )
 }
 
-export default EntrieCard
+export default InterpretationCard

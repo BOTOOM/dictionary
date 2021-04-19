@@ -65,8 +65,10 @@ const App: FC = () => {
         objProcessed[key] = uniqueArray
       }
     });
-    console.log(objProcessed)
+    // console.log(objProcessed)
     objProcessed['entry'] = values[0]['entry']
+    delete objProcessed['license']
+    delete objProcessed['sourceUrls']
     return objProcessed
   }
 
