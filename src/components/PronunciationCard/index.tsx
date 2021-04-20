@@ -11,10 +11,16 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+
 const useStyles = makeStyles({
     table: {
         marginTop: 1,
     },
+    sound: {
+        maxWidth: 105,
+        paddingRight: 30,
+        paddingLeft: 1
+    }
   });
   
   function createData(region, transcription, audio) {
@@ -32,7 +38,7 @@ const useStyles = makeStyles({
 const PronunciationCard = ({ nameEntry, dataEntry }) => {
     const classes = useStyles();
     const rows = (dataEntry as any[]).map(data => {
-        return createData(data['context']['regions'],data['transcriptions'][0]['transcription'],data['audio']?data['audio']['url']:'')
+        return createData(data['context']['regions'],data['transcriptions'][0]['transcription'],data['audio']?data['audio']['url']:null)
     });
 
     console.log(dataEntry)
@@ -61,7 +67,7 @@ const PronunciationCard = ({ nameEntry, dataEntry }) => {
                                             {row.region}
                                         </TableCell>
                                         <TableCell align="left">{row.transcription}</TableCell>
-                                        <TableCell align="left">{row.audio}</TableCell>
+                                        <TableCell align="left">{row.audio?<audio  src={row.audio} className={classes.sound} controls></audio>:'No Audio'}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
