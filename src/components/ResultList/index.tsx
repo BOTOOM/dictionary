@@ -1,5 +1,4 @@
 import React from 'react'
-import EntrieCard from '../EntrieCard'
 import PronunciationCard from '../PronunciationCard'
 import InterpretationCard from '../InterpretationCard'
 import LexemesCard from '../LexemesCard'
