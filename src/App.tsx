@@ -14,9 +14,7 @@ const App: FC = () => {
 
   const [resultSearch, setResultSearch] = useState({})
   const [word, setWord] = useState('');
-  const cosa = {
-    "hola": "holis"
-  }
+
 
 
 
