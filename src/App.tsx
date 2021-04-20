@@ -33,42 +33,40 @@ const App: FC = () => {
               'x-rapidapi-host': 'lingua-robot.p.rapidapi.com'
             }
           });
-          setResultSearch(processResponse(response.data.entries))
+          const dataProcessed = processResponse(response.data.entries);
+          setResultSearch(dataProcessed);
         }
       } catch (error) {
         console.log('ÉRROR', error)
       }
+    }
 
-
+    const processResponse = (values: any[]) => {
+      console.log('pross', values)
+      const objProcessed = {}
+      Object.keys(values[0]).forEach(key => {
+        // console.log(key)
+        if (key !== 'entry') {
+          const array1 = values.map(dato => dato[key]);
+          // console.log('array1', array1)
+          const array2 = [].concat(...array1);
+          // console.log('array2', array2)
+          const uniqueArray = uniq(array2.map(data => JSON.stringify(data))).map(dataUniq => JSON.parse(dataUniq))
+          // console.log('uniqueArray1', uniqueArray)
+          objProcessed[key] = uniqueArray
+        }
+      });
+      // console.log(objProcessed)
+      objProcessed['entry'] = values[0]['entry']
+      delete objProcessed['license']
+      delete objProcessed['sourceUrls']
+      return objProcessed
     }
     // // return () => {
     // //   cleanup
     // // }
     getDictionary(word);
   }, [word])
-
-
-  const processResponse = (values: any[]) => {
-    console.log('pross', values)
-    const objProcessed = {}
-    Object.keys(values[0]).forEach(key => {
-      // console.log(key)
-      if (key !== 'entry') {
-        const array1 = values.map(dato => dato[key]);
-        // console.log('array1', array1)
-        const array2 = [].concat(...array1);
-        // console.log('array2', array2)
-        const uniqueArray = uniq(array2.map(data => JSON.stringify(data))).map(dataUniq => JSON.parse(dataUniq))
-        // console.log('uniqueArray1', uniqueArray)
-        objProcessed[key] = uniqueArray
-      }
-    });
-    // console.log(objProcessed)
-    objProcessed['entry'] = values[0]['entry']
-    delete objProcessed['license']
-    delete objProcessed['sourceUrls']
-    return objProcessed
-  }
 
   function uniq(a) {
     var seen = {};
