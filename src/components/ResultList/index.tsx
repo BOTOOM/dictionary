@@ -6,7 +6,7 @@ import LexemesCard from '../LexemesCard'
 const renderCards = (responseArrayData) => {
     return (
         <div>
-            <PronunciationCard nameEntry={responseArrayData['entry']} dataEntry={responseArrayData['pronunciations']} />
+            {responseArrayData['pronunciations']?<PronunciationCard nameEntry={responseArrayData['entry']} dataEntry={responseArrayData['pronunciations']} />: ''}
             <InterpretationCard dataEntry={responseArrayData['interpretations']} />
             <LexemesCard dataEntry={responseArrayData['lexemes']} />
         </div>

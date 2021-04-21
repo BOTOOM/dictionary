@@ -36,13 +36,14 @@ const useStyles = makeStyles({
 //   ];
 
 const PronunciationCard = ({ nameEntry, dataEntry }) => {
+    console.log('PRONUNCIATION',dataEntry)
     const classes = useStyles();
     const rows = (dataEntry as any[]).map(data => {
-        return createData(data['context']['regions'],data['transcriptions'][0]['transcription'],data['audio']?data['audio']['url']:null)
+        return createData(data['context']['regions'],data['transcriptions']?data['transcriptions'][0]['transcription']:'',data['audio']?data['audio']['url']:null)
     });
 
-    console.log(dataEntry)
-    console.log(rows)
+    // console.log(dataEntry)
+    console.log('ROWS',rows)
     return (
         <Card className="entrie_card">
             <CardContent>

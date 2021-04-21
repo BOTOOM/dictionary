@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 
 const InterpretationCard = ({dataEntry}) => {
-    console.log(dataEntry)
+    // console.log(dataEntry)
     return (
         <Card className="entrie_card">
             <CardContent>
