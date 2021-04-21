@@ -31,12 +31,12 @@ const PronunciationCard = ({ dataEntry }) => {
     const classes = useStyles();
 
     useEffect(() => {
-        console.log('PRONUNCIATION', dataEntry)
+        // console.log('PRONUNCIATION', dataEntry)
         const rows = (dataEntry as any[]).map(data => {
             return createData(data['context']['regions'], data['transcriptions'] ? data['transcriptions'][0]['transcription'] : '', data['audio'] ? data['audio']['url'] : null)
         });
         // console.log(dataEntry)
-        console.log('ROWS', rows)
+        // console.log('ROWS', rows)
         setProninciation(rows)
         // return () => {
         //     cleanup
@@ -47,7 +47,7 @@ const PronunciationCard = ({ dataEntry }) => {
         <Card className="entrie_card">
             <CardContent>
                 {/* <Typography> */}
-                    Pronunciation
+                    <strong>Pronunciation</strong>
                     <br />
                     <br />
                     {proninciation.length > 0 ? <TableContainer component={Paper}>
