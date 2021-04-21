@@ -2,12 +2,14 @@ import React from 'react'
 import PronunciationCard from '../PronunciationCard'
 import InterpretationCard from '../InterpretationCard'
 import LexemesCard from '../LexemesCard'
+import EntrieCard from '../EntrieCard'
 
 const renderCards = (responseArrayData) => {
     return (
         <div>
-            {responseArrayData['pronunciations']?<PronunciationCard nameEntry={responseArrayData['entry']} dataEntry={responseArrayData['pronunciations']} />: ''}
-            <InterpretationCard dataEntry={responseArrayData['interpretations']} />
+            <EntrieCard dataEntry={responseArrayData['entry']} />
+            {responseArrayData['pronunciations']?<PronunciationCard dataEntry={responseArrayData['pronunciations']} />: ''}
+            {responseArrayData['interpretations'] ?<InterpretationCard dataEntry={responseArrayData['interpretations']} />:'' }
             <LexemesCard dataEntry={responseArrayData['lexemes']} />
         </div>
     )

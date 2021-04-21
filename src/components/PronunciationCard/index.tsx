@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -27,7 +26,7 @@ function createData(region, transcription, audio) {
     return { region, transcription, audio };
 }
 
-const PronunciationCard = ({ nameEntry, dataEntry }) => {
+const PronunciationCard = ({ dataEntry }) => {
     const [proninciation, setProninciation] = useState([]);
     const classes = useStyles();
 
@@ -47,10 +46,9 @@ const PronunciationCard = ({ nameEntry, dataEntry }) => {
     return (
         <Card className="entrie_card">
             <CardContent>
-                <Typography>
-                    <strong>{nameEntry}</strong>
-                    <br />
+                {/* <Typography> */}
                     Pronunciation
+                    <br />
                     <br />
                     {proninciation.length > 0 ? <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
@@ -62,8 +60,8 @@ const PronunciationCard = ({ nameEntry, dataEntry }) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {proninciation.map((row) => (
-                                    <TableRow key={row.region}>
+                                {proninciation.map((row, index) => (
+                                    <TableRow key={`${row.region}-${index}`}>
                                         <TableCell align="left" size="small" scope="row">
                                             {row.region}
                                         </TableCell>
@@ -74,7 +72,7 @@ const PronunciationCard = ({ nameEntry, dataEntry }) => {
                             </TableBody>
                         </Table>
                     </TableContainer> : ''}
-                </Typography>
+                {/* </Typography> */}
             </CardContent>
         </Card>
     )
