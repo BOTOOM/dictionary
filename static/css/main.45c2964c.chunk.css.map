@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,oBACI,QAAU,CACV,SACJ,CAEA,aACI,eAAgB,CAChB,eAAgB,CAChB,kBACJ","file":"main.45c2964c.chunk.css","sourcesContent":[".contenedor_general {\n    margin: 0%;\n    padding: 0%;\n}\n\n.entrie_card {\n    min-width: 275px;\n    margin-top: 1rem;\n    margin-bottom: 1rem;\n}"]}
