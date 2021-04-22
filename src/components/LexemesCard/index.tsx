@@ -46,18 +46,18 @@ const LexemesCard = ({ dataEntry }) => {
                                         <AccordionDetails>
                                             <Grid container>
                                                 <Grid item md={12} xs={12}>
-                                                    {lexem['senses'].map((sense) => {
-                                                        return (
-                                                            <List className="lista">
+                                                    <List className="lista">
 
-                                                                <ListItem >
+                                                        {lexem['senses'].map((sense, index) => {
+                                                            return (
+                                                                <ListItem key={`${sense['definition'].length}-${index}`} >
                                                                     <ListItemText>
-                                                                        {sense['labels'].map((labelunit) => (<Chip
+                                                                        {sense['labels']?sense['labels'].map((labelunit) => (<Chip
                                                                             label={labelunit}
                                                                             color="secondary"
                                                                             size="small"
                                                                             className="chips"
-                                                                        />))}   {sense['definition']}
+                                                                        />)) :'' }   {sense['definition']}
                                                                         <br />
                                                                         {sense['usageExamples'] ? <div>
                                                                             <small><strong>Example:</strong></small>
@@ -65,10 +65,11 @@ const LexemesCard = ({ dataEntry }) => {
                                                                         </div> : ''}
                                                                     </ListItemText>
                                                                 </ListItem>
-                                                            </List>
-                                                        )
-                                                    })
-                                                    }
+                                                            )
+                                                        })
+                                                        }
+                                                    </List>
+
                                                 </Grid>
                                             </Grid>
                                         </AccordionDetails>
