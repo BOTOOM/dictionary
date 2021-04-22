@@ -6,12 +6,11 @@ import CardContent from '@material-ui/core/CardContent';
 
 
 const EntrieCard = ({dataEntry}) => {
-    console.log(dataEntry)
     return (
         <Card className="entrie_card">
             <CardContent>
                 <Typography>
-                    <strong>palabra</strong>
+                    <strong>{dataEntry}</strong>
                 </Typography>
             </CardContent>
         </Card>

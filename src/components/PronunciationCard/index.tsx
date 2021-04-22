@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -21,38 +20,37 @@ const useStyles = makeStyles({
         paddingRight: 30,
         paddingLeft: 1
     }
-  });
-  
-  function createData(region, transcription, audio) {
-    return { region, transcription, audio};
-  }
-  
-//   const rows = [
-//     createData('Frozen yoghurt', 159, 6.0),
-//     createData('Ice cream sandwich', 237, 9.0,),
-//     createData('Eclair', 262, 16.0),
-//     createData('Cupcake', 305, 3.7),
-//     createData('Gingerbread', 356, 16.0),
-//   ];
+});
 
-const PronunciationCard = ({ nameEntry, dataEntry }) => {
-    console.log('PRONUNCIATION',dataEntry)
+function createData(region, transcription, audio) {
+    return { region, transcription, audio };
+}
+
+const PronunciationCard = ({ dataEntry }) => {
+    const [proninciation, setProninciation] = useState([]);
     const classes = useStyles();
-    const rows = (dataEntry as any[]).map(data => {
-        return createData(data['context']['regions'],data['transcriptions']?data['transcriptions'][0]['transcription']:'',data['audio']?data['audio']['url']:null)
-    });
 
-    // console.log(dataEntry)
-    console.log('ROWS',rows)
+    useEffect(() => {
+        // console.log('PRONUNCIATION', dataEntry)
+        const rows = (dataEntry as any[]).map(data => {
+            return createData(data['context']['regions'], data['transcriptions'] ? data['transcriptions'][0]['transcription'] : '', data['audio'] ? data['audio']['url'] : null)
+        });
+        // console.log(dataEntry)
+        // console.log('ROWS', rows)
+        setProninciation(rows)
+        // return () => {
+        //     cleanup
+        // }
+    }, [dataEntry])
+
     return (
         <Card className="entrie_card">
             <CardContent>
-                <Typography>
-                    <strong>{nameEntry}</strong>
+                {/* <Typography> */}
+                    <strong>Pronunciation</strong>
                     <br />
-                    Pronunciation
                     <br />
-                    <TableContainer component={Paper}>
+                    {proninciation.length > 0 ? <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
@@ -62,19 +60,19 @@ const PronunciationCard = ({ nameEntry, dataEntry }) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.map((row) => (
-                                    <TableRow key={row.region}>
+                                {proninciation.map((row, index) => (
+                                    <TableRow key={`${row.region}-${index}`}>
                                         <TableCell align="left" size="small" scope="row">
                                             {row.region}
                                         </TableCell>
                                         <TableCell align="left">{row.transcription}</TableCell>
-                                        <TableCell align="left">{row.audio?<audio  src={row.audio} className={classes.sound} controls></audio>:'No Audio'}</TableCell>
+                                        <TableCell align="left">{row.audio ? <audio src={row.audio} className={classes.sound} controls></audio> : 'No Audio'}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
-                    </TableContainer>
-                </Typography>
+                    </TableContainer> : ''}
+                {/* </Typography> */}
             </CardContent>
         </Card>
     )
