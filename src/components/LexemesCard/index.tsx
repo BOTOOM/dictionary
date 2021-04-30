@@ -10,6 +10,7 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid'
 
 import './lexem.css';
@@ -52,12 +53,12 @@ const LexemesCard = ({ dataEntry }) => {
                                                             return (
                                                                 <ListItem key={`${sense['definition'].length}-${index}`} >
                                                                     <ListItemText>
-                                                                        {sense['labels']?sense['labels'].map((labelunit) => (<Chip
+                                                                        {sense['labels'] ? sense['labels'].map((labelunit) => (<Chip
                                                                             label={labelunit}
                                                                             color="secondary"
                                                                             size="small"
                                                                             className="chips"
-                                                                        />)) :'' }   {sense['definition']}
+                                                                        />)) : ''}   {sense['definition']}
                                                                         <br />
                                                                         {sense['usageExamples'] ? <div>
                                                                             <small><strong>Example:</strong></small>
@@ -77,6 +78,87 @@ const LexemesCard = ({ dataEntry }) => {
                                 </div>
                             )
                         })}
+                        <br />
+                        {lexemes.map(data => data['antonymSets']).length > 0 ?
+                            <Accordion>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header" >
+                                    <Typography><h4>Antonyms  </h4></Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Grid container>
+                                        <Grid item md={12} xs={12}>
+                                            <List className="lista">
+                                                {lexemes.map((lememAntonym, index) => {
+                                                    return (
+                                                        <ListItem key={`${lememAntonym['lemma']}-${index}-antonym`}>
+                                                            {
+                                                                <List >
+                                                                    {
+                                                                        lememAntonym['antonymSets'] ? lememAntonym['antonymSets'].map((antonymList) => {
+                                                                            return (
+                                                                                <ListItem className="items_antonimos" key={`${antonymList['antonyms'].length}-${antonymList['sense']}`}>
+                                                                                    {`${antonymList['antonyms']}  :   ${antonymList['sense']}`}
+
+                                                                                    <Divider />
+                                                                                </ListItem>
+                                                                            )
+                                                                        }) : ''
+                                                                    }
+                                                                </List>
+
+                                                            }
+                                                        </ListItem>
+                                                    )
+                                                })}
+                                            </List>
+                                        </Grid>
+                                    </Grid>
+                                </AccordionDetails>
+                            </Accordion> : ''}
+                            <br />
+                        {lexemes.map(data => data['synonymSets']).length > 0 ?
+                            <Accordion>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header" >
+                                    <Typography><h4>Synonyms</h4></Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Grid container>
+                                        <Grid item md={12} xs={12}>
+                                            <List className="lista">
+                                                {lexemes.map((lememSynonym, index) => {
+                                                    return (
+                                                        <ListItem key={`${lememSynonym['lemma']}-${index}-synonym`}>
+                                                            {
+                                                                <List >
+                                                                    {
+                                                                        lememSynonym['synonymSets'] ? lememSynonym['synonymSets'].map((synonymList) => {
+                                                                            return (
+                                                                                <ListItem className="items_antonimos" key={`${synonymList['synonyms'].length}-${synonymList['sense']}`}>
+                                                                                    {`${synonymList['synonyms']}  :   ${synonymList['sense']}`}
+
+                                                                                    <Divider />
+                                                                                </ListItem>
+                                                                            )
+                                                                        }) : ''
+                                                                    }
+                                                                </List>
+
+                                                            }
+                                                        </ListItem>
+                                                    )
+                                                })}
+                                            </List>
+                                        </Grid>
+                                    </Grid>
+                                </AccordionDetails>
+                            </Accordion> : ''}
+
                     </div>
                 </CardContent> : ''
             }
