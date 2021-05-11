@@ -85,7 +85,7 @@ const LexemesCard = ({ dataEntry }) => {
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1a-content"
                                     id="panel1a-header" >
-                                    <Typography><h4>Antonyms  </h4></Typography>
+                                    <Typography variant="h6">Antonyms  </Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Grid container>
@@ -100,8 +100,7 @@ const LexemesCard = ({ dataEntry }) => {
                                                                         lememAntonym['antonymSets'] ? lememAntonym['antonymSets'].map((antonymList) => {
                                                                             return (
                                                                                 <ListItem className="items_antonimos" key={`${antonymList['antonyms'].length}-${antonymList['sense']}`}>
-                                                                                    {`${antonymList['antonyms']}  :   ${antonymList['sense']}`}
-
+                                                                                    {antonymList['sense']?`${antonymList['antonyms']}  :   ${antonymList['sense']}`:`${antonymList['antonyms']}`}
                                                                                     <Divider />
                                                                                 </ListItem>
                                                                             )
@@ -125,7 +124,7 @@ const LexemesCard = ({ dataEntry }) => {
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1a-content"
                                     id="panel1a-header" >
-                                    <Typography><h4>Synonyms</h4></Typography>
+                                    <Typography variant="h6">Synonyms</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Grid container>
@@ -140,7 +139,8 @@ const LexemesCard = ({ dataEntry }) => {
                                                                         lememSynonym['synonymSets'] ? lememSynonym['synonymSets'].map((synonymList) => {
                                                                             return (
                                                                                 <ListItem className="items_antonimos" key={`${synonymList['synonyms'].length}-${synonymList['sense']}`}>
-                                                                                    {`${synonymList['synonyms']}  :   ${synonymList['sense']}`}
+                                                                                    {/* {`${synonymList['synonyms']}  :   ${synonymList['sense']}`} */}
+                                                                                    {synonymList['sense']?`${synonymList['synonyms']}  :   ${synonymList['sense']}`:`${synonymList['synonyms']}`}
 
                                                                                     <Divider />
                                                                                 </ListItem>
@@ -158,6 +158,18 @@ const LexemesCard = ({ dataEntry }) => {
                                     </Grid>
                                 </AccordionDetails>
                             </Accordion> : ''}
+                            <br/>
+                            <div>
+                            <Accordion className="acordeon">
+                                <AccordionSummary className="acordeon"
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content1"
+                                    id="panel1a-header1" >
+                                    <Typography variant="h6">Froms </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>holis </AccordionDetails>
+                            </Accordion>
+                            </div>
 
                     </div>
                 </CardContent> : ''
