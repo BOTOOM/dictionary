@@ -21,10 +21,10 @@ const App: FC = () => {
       <Container fixed>
         <Router>
           <Switch>
-            <Route path="/academic">
+            <Route path="/dictionary/academic">
               <Academic/> 
             </Route>
-            <Route path="/urban">
+            <Route path="/dictionary/urban">
               urban
             </Route>
             <Route>
