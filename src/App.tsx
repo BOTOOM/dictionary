@@ -3,7 +3,7 @@ import NavBar from './components/NavBar';
 import Container from '@material-ui/core/Container';
 
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom'
