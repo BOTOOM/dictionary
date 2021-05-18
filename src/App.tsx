@@ -19,9 +19,9 @@ const App: FC = () => {
     <div className="contenedor_general">
       <NavBar />
       <Container fixed>
-        <Router>
+        {/* <Router> */}
           <Switch>
-            <Route path="/dictionary/academic">
+            <Route exact path="/dictionary/academic">
               <Academic/> 
             </Route>
             <Route path="/dictionary/urban">
@@ -31,7 +31,7 @@ const App: FC = () => {
               <PageNotFound/>
             </Route>
           </Switch>
-        </Router>
+        {/* </Router> */}
       </Container>
     </div>
   );
