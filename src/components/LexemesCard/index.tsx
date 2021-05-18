@@ -159,7 +159,7 @@ const LexemesCard = ({ dataEntry }) => {
                                 </AccordionDetails>
                             </Accordion> : ''}
                             <br/>
-                            <div>
+                            {/* <div>
                             <Accordion className="acordeon">
                                 <AccordionSummary className="acordeon"
                                     expandIcon={<ExpandMoreIcon />}
@@ -169,7 +169,7 @@ const LexemesCard = ({ dataEntry }) => {
                                 </AccordionSummary>
                                 <AccordionDetails>holis </AccordionDetails>
                             </Accordion>
-                            </div>
+                            </div> */}
 
                     </div>
                 </CardContent> : ''
