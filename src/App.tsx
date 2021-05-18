@@ -3,9 +3,14 @@ import NavBar from './components/NavBar';
 import SearchCard from './components/searchCard';
 import ResultList from './components/ResultList'
 import Container from '@material-ui/core/Container';
-// import Typography from '@material-ui/core/Typography';
-// require('dotenv').config()
+
 import axios from 'axios';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
 
 
 import './App.css';
@@ -79,12 +84,25 @@ const App: FC = () => {
     <div className="contenedor_general">
       <NavBar />
       <Container fixed>
-        <SearchCard onTipeWord={(value) => {
+        <Router>
+          <Switch>
+            <Route path="/academic">
+              holi
+            </Route>
+            <Route path="/urban">
+              urban
+            </Route>
+            <Route>
+              nada
+            </Route>
+          </Switch>
+        </Router>
+        {/* <SearchCard onTipeWord={(value) => {
           console.log(value)
           setWord(value);
         }} />
         <br />
-        <ResultList responseArray={resultSearch} ></ResultList>
+        <ResultList responseArray={resultSearch} ></ResultList> */}
       </Container>
     </div>
   );
