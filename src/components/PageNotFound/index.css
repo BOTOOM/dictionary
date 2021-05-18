@@ -1,0 +1,14 @@
+/* .imagesCenter {
+    width: 80%;
+} */
+
+.container-notfound {
+    background: no-repeat;
+    background-position: button center;
+    background-size: 80%;
+    height: 40rem;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
