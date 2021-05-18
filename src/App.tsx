@@ -14,6 +14,7 @@ import {
 
 
 import './App.css';
+import PageNotFound from './components/PageNotFound';
 
 const App: FC = () => {
 
@@ -93,7 +94,7 @@ const App: FC = () => {
               urban
             </Route>
             <Route>
-              nada
+              <PageNotFound/>
             </Route>
           </Switch>
         </Router>
