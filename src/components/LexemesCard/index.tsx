@@ -91,7 +91,7 @@ const LexemesCard = ({ dataEntry }) => {
                                     <Grid container>
                                         <Grid item md={12} xs={12}>
                                             <List className="lista">
-                                                {lexemes.map((lememAntonym, index) => {
+                                                {lexemes.filter(aton => aton.hasOwnProperty('antonymSets')).map((lememAntonym, index) => {
                                                     return (
                                                         <ListItem key={`${lememAntonym['lemma']}-${index}-antonym`}>
                                                             {
@@ -130,13 +130,13 @@ const LexemesCard = ({ dataEntry }) => {
                                     <Grid container>
                                         <Grid item md={12} xs={12}>
                                             <List className="lista">
-                                                {lexemes.map((lememSynonym, index) => {
+                                                {lexemes.filter(synom => synom.hasOwnProperty('synonymSets')).map((lememSynonym, index) => {
                                                     return (
                                                         <ListItem key={`${lememSynonym['lemma']}-${index}-synonym`}>
                                                             {
                                                                 <List >
                                                                     {
-                                                                        lememSynonym['synonymSets'] ? lememSynonym['synonymSets'].map((synonymList) => {
+                                                                        lememSynonym['synonymSets'] !== undefined && lememSynonym['synonymSets'].map((synonymList) => {
                                                                             return (
                                                                                 <ListItem className="items_antonimos" key={`${synonymList['synonyms'].length}-${synonymList['sense']}`}>
                                                                                     {/* {`${synonymList['synonyms']}  :   ${synonymList['sense']}`} */}
@@ -145,7 +145,7 @@ const LexemesCard = ({ dataEntry }) => {
                                                                                     <Divider />
                                                                                 </ListItem>
                                                                             )
-                                                                        }) : ''
+                                                                        })
                                                                     }
                                                                 </List>
 
