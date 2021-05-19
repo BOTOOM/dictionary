@@ -4,7 +4,7 @@ import SearchCard from '../../components/searchCard';
 
 const Urban = () => {
     const [word, setWord] = useState('');
-    const [resultSearch, setResultSearch] = useState({})
+    // const [resultSearch, setResultSearch] = useState({})
     useEffect(() => {
 
         const getDictionary = async (palabra) => {
