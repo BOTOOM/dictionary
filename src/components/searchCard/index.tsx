@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
@@ -35,7 +35,7 @@ interface State {
 const SearchCard = ({ onTipeWord }) => {
     const classes = useStyles();
     const history = useHistory()
-    const [dictionary, setDictionary] = useState('Academic')
+    // const [dictionary, setDictionary] = useState('Academic')
 
     // const bull = <span className={classes.bullet}>•</span>;
 
@@ -62,13 +62,13 @@ const SearchCard = ({ onTipeWord }) => {
         console.log(history)
         // history.push(`/urban`)
         if (history['location']['pathname'] === "/urban") {
-            setDictionary('Academic')
+            // setDictionary('Academic')
             history.push(`/academic`)
             return;
         }
         if (history['location']['pathname'] === "/academic") {
             history.push(`/urban`)
-            setDictionary('Urban')
+            // setDictionary('Urban')
             return;
         }
     }, [history])
