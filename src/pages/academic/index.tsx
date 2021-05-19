@@ -38,6 +38,13 @@ const Academic = () => {
       }
     }
 
+    const getAllJsonProperties = (arrayData: any[]): any[] => {
+      const arr = arrayData.map(data => Object.keys(data))
+      const obj = uniq([].concat(...arr));
+      console.log('obj',obj)
+      return obj
+    }
+
     const processResponse = (values: any[]) => {
       console.log('pross', values)
       const objProcessed = {}
@@ -73,12 +80,7 @@ const Academic = () => {
       return seen.hasOwnProperty(item) ? false : (seen[item] = true);
     });
   }
-  const getAllJsonProperties = (arrayData: any[]): any[] => {
-    const arr = arrayData.map(data => Object.keys(data))
-    const obj = uniq([].concat(...arr));
-    console.log('obj',obj)
-    return obj
-  }
+  
     return (
         <div>
             <SearchCard onTipeWord={(value) => {
