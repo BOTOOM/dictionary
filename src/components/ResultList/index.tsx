@@ -17,12 +17,10 @@ const renderCards = (responseArrayData) => {
 }
 
 const ResultList = ({ responseArray }) => {
-    console.log('LISTA',responseArray)
     return (
         <div>
             {( Object.keys(responseArray).length > 0 ) ?renderCards(responseArray) : 
-            <BannerAcademic/>}
-
+            <BannerAcademic nameImage='academic' />}
         </div>
     )
 }

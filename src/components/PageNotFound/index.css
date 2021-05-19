@@ -3,6 +3,7 @@
 } */
 
 .container-notfound {
+    margin-top: 40px;
     background: no-repeat;
     background-position: button center;
     background-size: 80%;
