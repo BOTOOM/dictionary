@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
@@ -35,6 +35,7 @@ interface State {
 const SearchCard = ({ onTipeWord }) => {
     const classes = useStyles();
     const history = useHistory()
+    const [dictionary, setDictionary] = useState('Academic')
 
     // const bull = <span className={classes.bullet}>•</span>;
 
@@ -58,7 +59,18 @@ const SearchCard = ({ onTipeWord }) => {
     }
 
     const onClickHandler = React.useCallback(() => {
-        history.push(`/urban`)
+        console.log(history)
+        // history.push(`/urban`)
+        if (history['location']['pathname'] === "/urban") {
+            setDictionary('Academic')
+            history.push(`/academic`)
+            return;
+        }
+        if (history['location']['pathname'] === "/academic") {
+            history.push(`/urban`)
+            setDictionary('Urban')
+            return;
+        }
     }, [history])
 
     return (
@@ -67,14 +79,14 @@ const SearchCard = ({ onTipeWord }) => {
 
                 <Typography variant="h5" component="h2">
                     What word do you want to search for?
-        </Typography>
+                  </Typography>
                 <TextField size="small" className={classes.texto} id="outlined-basic" label="Type your word" variant="outlined"
                     onChange={handleChange('word')} onKeyDown={_handleKeyDown} value={values.word} />
                 <Button className={classes.boton} size="large" variant="outlined" color="primary" onClick={sendWord}>
                     Search
                 </Button>
                 <Button className={classes.boton} size="large" variant="outlined" color="secondary" onClick={onClickHandler}>
-                    Change to Urban
+                    Academic / Urban
                 </Button>
             </CardContent>
         </Card>
