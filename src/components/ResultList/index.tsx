@@ -9,7 +9,7 @@ const renderCards = (responseArrayData) => {
     return (
         <div>
             <EntrieCard dataEntry={responseArrayData['entry']} />
-            {responseArrayData['pronunciations']?<PronunciationCard dataEntry={responseArrayData['pronunciations']} />: ''}
+            {responseArrayData.hasOwnProperty('pronunciations') && <PronunciationCard dataEntry={responseArrayData['pronunciations']} />}
             {/* {responseArrayData['interpretations'] ?<InterpretationCard dataEntry={responseArrayData['interpretations']} />:'' } */}
             {responseArrayData['lexemes']?<LexemesCard dataEntry={responseArrayData['lexemes']} />:'Lexemes not Found'}
         </div>
