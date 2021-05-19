@@ -54,7 +54,7 @@ const SearchCard = ({ onTipeWord }) => {
     };
 
     const sendWord = () => {
-        onTipeWord(values.word);
+        onTipeWord(values.word.toLowerCase());
     }
 
     const onClickHandler = React.useCallback(() => {
