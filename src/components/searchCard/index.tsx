@@ -6,6 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import { useHistory } from 'react-router-dom'
+
 
 const useStyles = makeStyles({
     root: {
@@ -32,6 +34,8 @@ interface State {
 
 const SearchCard = ({ onTipeWord }) => {
     const classes = useStyles();
+    const history = useHistory()
+
     // const bull = <span className={classes.bullet}>•</span>;
 
     const [values, setValues] = React.useState<State>({
@@ -53,6 +57,10 @@ const SearchCard = ({ onTipeWord }) => {
         onTipeWord(values.word);
     }
 
+    const onClickHandler = React.useCallback(() => {
+        history.push(`/urban`)
+    }, [history])
+
     return (
         <Card className={classes.root}>
             <CardContent>
@@ -64,6 +72,9 @@ const SearchCard = ({ onTipeWord }) => {
                     onChange={handleChange('word')} onKeyDown={_handleKeyDown} value={values.word} />
                 <Button className={classes.boton} size="large" variant="outlined" color="primary" onClick={sendWord}>
                     Search
+                </Button>
+                <Button className={classes.boton} size="large" variant="outlined" color="secondary" onClick={onClickHandler}>
+                    Change to Urban
                 </Button>
             </CardContent>
         </Card>

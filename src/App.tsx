@@ -12,6 +12,7 @@ import {
 import './App.css';
 import PageNotFound from './components/PageNotFound';
 import Academic from './pages/academic';
+import Urban from './pages/urban';
 
 const App: FC = () => {
 
@@ -25,7 +26,7 @@ const App: FC = () => {
               <Academic/> 
             </Route>
             <Route path="/urban">
-              urban
+              <Urban/>
             </Route>
             <Route>
               <PageNotFound/>
