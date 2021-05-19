@@ -3,6 +3,7 @@ import PronunciationCard from '../PronunciationCard'
 // import InterpretationCard from '../InterpretationCard'
 import LexemesCard from '../LexemesCard'
 import EntrieCard from '../EntrieCard'
+import BannerAcademic from '../BannerAcademic'
 
 const renderCards = (responseArrayData) => {
     return (
@@ -20,7 +21,7 @@ const ResultList = ({ responseArray }) => {
     return (
         <div>
             {/* {responseArray.entries? responseArray.entries[0].entry: "no hay nada" } */}
-            {responseArray['entry'] ?renderCards(responseArray) : ("no hay nada")}
+            {responseArray['entry'] ?renderCards(responseArray) : <BannerAcademic/>}
 
         </div>
     )

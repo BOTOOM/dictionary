@@ -7,7 +7,7 @@ const PageNotFound = () => {
     const history = useHistory()
 
     const onClickHandler = React.useCallback(() => {
-        history.push(`/dictionary/academic`)
+        history.push(`/academic`)
     }, [history])
 
     return (

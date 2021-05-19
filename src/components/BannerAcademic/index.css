@@ -1,0 +1,16 @@
+/* .imagesCenter {
+    width: 80%;
+} */
+
+.container-notfound {
+    background: no-repeat;
+    background-position: button center;
+    background-size: 80%;
+    opacity: 0.85;
+    height: 40rem;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    margin-left: 2.5rem;
+}
