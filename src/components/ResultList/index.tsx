@@ -17,11 +17,11 @@ const renderCards = (responseArrayData) => {
 }
 
 const ResultList = ({ responseArray }) => {
-    console.log(responseArray)
+    console.log('LISTA',responseArray)
     return (
         <div>
-            {/* {responseArray.entries? responseArray.entries[0].entry: "no hay nada" } */}
-            {responseArray['entry'] ?renderCards(responseArray) : <BannerAcademic/>}
+            {( Object.keys(responseArray).length > 0 ) ?renderCards(responseArray) : 
+            <BannerAcademic/>}
 
         </div>
     )
