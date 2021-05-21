@@ -11,7 +11,7 @@ const CardUrbanDefinition = ({ definition }) => {
         if (Object.keys(definition).length > 0) {
             const obj: ObjectUrban = {
                 definition: definition.definition.replace(/\[/g, '<strong>').replace(/\]/g, '</strong>'),
-                example: definition.example.replace(/\n/g, "<br />")
+                example: definition.example.replace(/\n/g, "<br />").replace(/\[/g, '<strong>').replace(/\]/g, '</strong>')
             }
             setDefinitionObject(obj)
             // obj.example = definition.example
